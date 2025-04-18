@@ -7,6 +7,7 @@ import {
   deleteWish,
   updateWish,
   getWishById,
+  getSummary,
 } from "./src/wishes/methods.js";
 
 const rl = readline.createInterface({
@@ -35,9 +36,11 @@ rl.on("line", async (input) => {
     case "1":
       await getWishes();
       break;
+
     case input.match(pattern) ? input : null:
       await handleCreateWish(input);
       break;
+
     case "2":
       await getWishes();
       console.log(
@@ -45,6 +48,7 @@ rl.on("line", async (input) => {
       );
       currentAction = "update";
       break;
+
     case "3":
       await getWishes();
       console.log(
@@ -52,6 +56,11 @@ rl.on("line", async (input) => {
       );
       currentAction = "delete";
       break;
+
+    case "4":
+      await getSummary();
+      break;
+
     case "0":
       rl.close();
       return;
@@ -198,7 +207,8 @@ async function handleCreateWish(input) {
 function menu() {
   console.log("\n***** Press 1 to show wishes *****");
   console.log("***** Press 2 to update a wish *****");
-  console.log("***** Press 3 to delete a wish *****\n");
+  console.log("***** Press 3 to delete a wish *****");
+  console.log("***** Press 4 to show summary of the wishes *****\n");
   console.log(
     "***** To create a wish, write it with the following format: name-of-wish price store *****"
   );
