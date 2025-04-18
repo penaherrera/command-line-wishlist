@@ -61,6 +61,27 @@ export const deleteWish = async (id) => {
   }
 };
 
+export const getSummary = async () => {
+  const database = await getDB();
+  const numberOfItems = database.wishes.length;
+  let costsArray = [];
+
+  let totalCost = 0;
+
+  for (let i = 0; i < numberOfItems; i++) {
+    totalCost += database.wishes[i].price;
+    costsArray.push(database.wishes[i].price);
+  }
+
+  const expensiveItem = Math.max(...costsArray);
+  const priceAverage = totalCost / numberOfItems;
+
+  console.log(`\n***** Total Cost: ${totalCost} *****`);
+  console.log(`***** Most Expensive Item: ${expensiveItem} *****`);
+  console.log(`***** Number of wishes: ${numberOfItems} *****`);
+  console.log(`***** Price Average: ${priceAverage} *****\n`);
+};
+
 const generateId = async () => {
   const fetchWishes = await getDB();
   const arrayLength = fetchWishes.wishes.length;
