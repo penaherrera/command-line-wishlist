@@ -1,0 +1,22 @@
+{
+  "wishes": [
+    {
+      "id": 1,
+      "name": "Les Paul Guitar",
+      "price": 700,
+      "store": "Gibson"
+    },
+    {
+      "id": 2,
+      "name": "Metallica Concert Ticket",
+      "price": 200,
+      "store": "Todo Ticket"
+    },
+    {
+      "id": 3,
+      "name": "ravn glass",
+      "price": 10,
+      "store": "Ravn Store"
+    }
+  ]
+}
